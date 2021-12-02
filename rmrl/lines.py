@@ -88,7 +88,7 @@ def readLines(source):
                 segments = []
                 for i in range(n_segments):
                     x, y, speed, direction, width, pressure = readStruct(S_SEGMENT, source)
-                    segments.append(Segment(x, y, speed, direction, width, pressure))
+                    segments.append(Segment(x, y, speed, direction, width * 0.8, pressure))
                 strokes.append(Stroke(pen, color, unk1, width, unk2, segments))
             layers.append(strokes)
 

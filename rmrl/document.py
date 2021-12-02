@@ -156,11 +156,12 @@ class DocumentPageLayer:
         self.page = page
         self.name = name
 
+        # pen colors
         self.colors = [
             #QSettings().value('pane/notebooks/export_pdf_blackink'),
             #QSettings().value('pane/notebooks/export_pdf_grayink'),
             #QSettings().value('pane/notebooks/export_pdf_whiteink')
-            (0, 0, 0),
+            (56/255, 57/255, 56/255),
             (0.5, 0.5, 0.5),
             (1, 1, 1)
         ]
