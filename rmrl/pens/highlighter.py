@@ -17,8 +17,8 @@
 from .generic import GenericPen
 
 class HighlighterPen(GenericPen):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    def __init__(self, color, *args, **kwargs):
+        super().__init__(color, *args, **kwargs)
         self.layer = kwargs.get('layer')
         self.annotate = False #TODO bool(int(QSettings().value(
         #    'pane/notebooks/export_pdf_annotate')))
@@ -28,7 +28,7 @@ class HighlighterPen(GenericPen):
         canvas.setLineCap(2)  # Square
         canvas.setLineJoin(1)  # Round
         #canvas.setDash ?? for solid line
-        canvas.setStrokeColor((1.000, 0.914, 0.290), alpha=0.392)
+        canvas.setStrokeColor(self.color, alpha=0.35)
         canvas.setLineWidth(stroke.width)
 
         path = canvas.beginPath()
