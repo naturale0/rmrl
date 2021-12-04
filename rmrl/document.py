@@ -161,9 +161,12 @@ class DocumentPageLayer:
             #QSettings().value('pane/notebooks/export_pdf_blackink'),
             #QSettings().value('pane/notebooks/export_pdf_grayink'),
             #QSettings().value('pane/notebooks/export_pdf_whiteink')
-            (56/255, 57/255, 56/255),
-            (0.5, 0.5, 0.5),
-            (1, 1, 1)
+            # Colors described as: name on rM (rendered color)
+            (56/255, 57/255, 56/255),   # black (very dark grey)
+            (0.5, 0.5, 0.5),            # grey  (light grey)
+            (1, 1, 1)                   # white (white)
+            (52/255, 120/255, 247/255)  # blue  (unnoticeably pastel blue)
+            (228/255, 95/255, 89/255)   # red   (slightly pinkish red)
         ]
 
         # Set this from the calling func
