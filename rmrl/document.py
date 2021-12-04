@@ -162,11 +162,19 @@ class DocumentPageLayer:
             #QSettings().value('pane/notebooks/export_pdf_grayink'),
             #QSettings().value('pane/notebooks/export_pdf_whiteink')
             # Colors described as: name on rM (rendered color)
-            (56/255, 57/255, 56/255),   # black (very dark grey)
-            (0.5, 0.5, 0.5),            # grey  (light grey)
-            (1, 1, 1)                   # white (white)
-            (52/255, 120/255, 247/255)  # blue  (unnoticeably pastel blue)
-            (228/255, 95/255, 89/255)   # red   (slightly pinkish red)
+            (56/255, 57/255, 56/255),    # black (very dark grey)
+            (0.5, 0.5, 0.5),             # grey  (light grey)
+            (1, 1, 1),                   # white (white)
+            (52/255, 120/255, 247/255),  # blue  (unnoticeably pastel blue)
+            (228/255, 95/255, 89/255)    # red   (slightly pinkish red)
+        ]
+        
+        # highlight colors
+        self.highlight_colors = [
+            # Colors described as: name on rM (rendered color)
+            (248/255, 241/255, 36/255),  # yellow (yellow)
+            (183/255, 248/255, 73/255),  # green  (yellowish green)
+            (248/255, 80/255, 163/255)   # pink   (reddish pink)
         ]
 
         # Set this from the calling func
@@ -237,9 +245,16 @@ class DocumentPageLayer:
                 log.error("Unknown pen code %d" % pen)
                 penclass = pens.GenericPen
 
+            # if pen is highlighter
+            elif penclass == HighlighterPen:
+                pencolor = self.highlight_colors[color]
+            # if pen is not highlighter
+            else:
+                pencolor = self.colors[color]
+
             qpen = penclass(vector=vector,
                             layer=self,
-                            color=self.colors[color])
+                            color=pencolor)
 
             # Do the needful
             qpen.paint_stroke(canvas, stroke)
