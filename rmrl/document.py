@@ -49,6 +49,13 @@ class DocumentPage:
             with source.open(metafilepath, 'r') as f:
                 self.metadict = json.load(f)
 
+        # Try to load smart highlights
+        self.highlightdict = None
+        highlightfilepath = f'{{ID}}.highlights/{pid}.json'
+        if source.exists(highlightfilepath):
+            with source.open(highlightfilepath, 'r') as f:
+                self.highlightdict = json.load(f)
+
         # Try to load template
         self.template = None
         template_names = []
@@ -94,6 +101,13 @@ class DocumentPage:
         pagelayers = None
         with self.source.open(self.rmpath, 'rb') as f:
             _, pagelayers = lines.readLines(f)
+
+        # Load page layers of highlights
+        if self.highlightdict:
+            _, pagelayershlght = lines.readHighlights(self.highlightdict)
+            
+            from operator import add
+            pagelayers = list(map(add, pagelayers, pagelayershlght))
 
         # Load layer data
         for i in range(0, len(pagelayers)):

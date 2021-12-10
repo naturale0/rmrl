@@ -46,7 +46,7 @@ S_LAYER = struct.Struct('<I')
 S_STROKE_V3 = struct.Struct('<IIIfI')
 S_STROKE_V5 = struct.Struct('<IIIfII')
 S_SEGMENT = struct.Struct('<ffffff')
-
+OFFSET = 10
 
 class UnsupportedVersion(Exception):
     pass
@@ -93,6 +93,43 @@ def readLines(source):
             layers.append(strokes)
 
         return (ver, layers)
+
+    except struct.error:
+        raise InvalidFormat("Error while reading page")
+
+# source is a dict from json.load()
+def readHighlights(source):
+    try:
+        n_layers = len(source["highlights"])
+        layers = []
+        for l in range(n_layers):
+            # n_strokes, = readStruct(S_LAYER, source)
+            n_highlights = len(source["highlights"][l])
+            rects = []
+            for h in range(n_highlights):
+                rects += source["highlights"][l][h]["rects"]
+            
+            #n_strokes = len(rects)
+            strokes = []
+            for r in rects:
+                # pen, color, unk1, width, unk2, n_segments = readStroke(source)
+                pen, color, unk1, unk2 = 18, 1, 0, 0
+                width = r["height"]
+
+                segments = []
+                segwidth = r["height"]
+                x, y = r["x"], r["y"] + segwidth / 2
+                x1 = x + OFFSET
+                x2 = x + r["width"] - OFFSET
+                speed = pressure = 0.
+                direction = 0.
+                
+                segments.append(Segment(x1, y, speed, direction, segwidth * 0.8, pressure))
+                segments.append(Segment(x2, y, speed, direction, segwidth * 0.8, pressure))
+                strokes.append(Stroke(pen, color, unk1, width, unk2, segments))
+            layers.append(strokes)
+
+        return (None, layers)
 
     except struct.error:
         raise InvalidFormat("Error while reading page")

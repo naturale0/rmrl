@@ -26,7 +26,7 @@ class HighlighterPen(GenericPen):
     def paint_stroke(self, canvas, stroke):
         canvas.saveState()
         canvas.setLineCap(2)  # Square
-        canvas.setLineJoin(1)  # Round
+        canvas.setLineJoin(2)  # Round
         #canvas.setDash ?? for solid line
         canvas.setStrokeColor(self.color, alpha=0.35)
         canvas.setLineWidth(stroke.width)
