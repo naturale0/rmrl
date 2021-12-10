@@ -42,13 +42,8 @@ Installation
 rmrl requires Python 3.7 or later.  If that's installed, the easiest installation
 is to do a
 ```bash
-pip install rmrl
+pip install git+https://github.com/naturale0/rmrl.git
 ```
-Alternatively, you may clone this repository.  [Poetry](https://python-poetry.org/) is used for development, so once that is installed you can run
-```bash
-poetry install
-```
-to get a virtual environment all set up.
 
 Usage
 -----
