@@ -97,23 +97,29 @@ def readLines(source):
     except struct.error:
         raise InvalidFormat("Error while reading page")
 
-# source is a dict from json.load()
-def readHighlights(source):
+# json is a dict from json.load()
+def readHighlights(json):
     try:
-        n_layers = len(source["highlights"])
+        n_layers = len(json["highlights"])
         layers = []
         for l in range(n_layers):
             # n_strokes, = readStruct(S_LAYER, source)
-            n_highlights = len(source["highlights"][l])
+            n_highlights = len(json["highlights"][l])
+            colors = []
             rects = []
             for h in range(n_highlights):
-                rects += source["highlights"][l][h]["rects"]
+                rects += json["highlights"][l][h]["rects"]
+                try:
+                    colors.append(json["highlights"][l][h]["color"])
+                except KeyError:
+                    # In case there is no "color" property, set color to yellow (3)
+                    colors.append(3)
             
             #n_strokes = len(rects)
             strokes = []
-            for r in rects:
+            for r, c in zip(rects, colors):
                 # pen, color, unk1, width, unk2, n_segments = readStroke(source)
-                pen, color, unk1, unk2 = 18, 1, 0, 0
+                pen, unk1, unk2 = 18, 0, 0
                 width = r["height"]
 
                 segments = []
@@ -126,7 +132,7 @@ def readHighlights(source):
                 
                 segments.append(Segment(x1, y, speed, direction, segwidth * 0.8, pressure))
                 segments.append(Segment(x2, y, speed, direction, segwidth * 0.8, pressure))
-                strokes.append(Stroke(pen, color, unk1, width, unk2, segments))
+                strokes.append(Stroke(pen, c, unk1, width, unk2, segments))
             layers.append(strokes)
 
         return (None, layers)
