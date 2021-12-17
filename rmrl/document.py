@@ -180,6 +180,9 @@ class DocumentPageLayer:
             (56/255, 57/255, 56/255),    # black (very dark grey)
             (0.5, 0.5, 0.5),             # grey  (light grey)
             (1, 1, 1),                   # white (white)
+            (None, None, None),
+            (None, None, None),
+            (None, None, None),
             (52/255, 120/255, 247/255),  # blue  (unnoticeably pastel blue)
             (228/255, 95/255, 89/255)    # red   (slightly pinkish red)
         ]
@@ -187,8 +190,11 @@ class DocumentPageLayer:
         # highlight colors
         self.highlight_colors = [
             # Colors described as: name on rM (rendered color)
-            (183/255, 248/255, 73/255),  # green  (yellowish green)
+            (None, None, None),
             (248/255, 241/255, 36/255),  # yellow (yellow)
+            (None, None, None),
+            (248/255, 241/255, 36/255),  # yellow (yellow)
+            (183/255, 248/255, 73/255),  # green  (yellowish green)
             (248/255, 79/255, 145/255)   # pink   (reddish pink)
         ]
 
