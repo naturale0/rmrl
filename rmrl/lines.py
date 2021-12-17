@@ -46,7 +46,6 @@ S_LAYER = struct.Struct('<I')
 S_STROKE_V3 = struct.Struct('<IIIfI')
 S_STROKE_V5 = struct.Struct('<IIIfII')
 S_SEGMENT = struct.Struct('<ffffff')
-OFFSET = 10
 
 class UnsupportedVersion(Exception):
     pass
@@ -124,9 +123,10 @@ def readHighlights(json):
 
                 segments = []
                 segwidth = r["height"]
+                offset = segwidth / 2
                 x, y = r["x"], r["y"] + segwidth / 2
-                x1 = x + OFFSET
-                x2 = x + r["width"] - OFFSET
+                x1 = x + offset
+                x2 = x + r["width"] - offset
                 speed = pressure = 0.
                 direction = 0.
                 
