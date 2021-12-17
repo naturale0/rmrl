@@ -1,18 +1,28 @@
 rmrl-naturale0: reMarkable Rendering Library  
 (tweaked to suit my taste)
 ===================================
-**Difference to the original [rschroll/rmrl](https://github.com/rschroll/rmrl)**
+## Difference to the original [rschroll/rmrl](https://github.com/rschroll/rmrl)
 - Black is not pure black (![#383938](https://via.placeholder.com/15/383938/000000?text=+) `#383938` instead of ![#000000](https://via.placeholder.com/15/000000/000000?text=+) `#000000`). It resembles the actual pen/pencil to my eye.
 - Grey is lighter (![#BFBFBF](https://via.placeholder.com/15/BFBFBF/000000?text=+) `#BFBFBF` instead of ![#7D7D7D](https://via.placeholder.com/15/7D7D7D/000000?text=+) `#7D7D7D`).
 - Renders pen thickness to be 20% thinner. Because it looks more consistent to my eye as seen on the device screen.
 
-**Features that are not in [rschroll/rmrl](https://github.com/rschroll/rmrl)**
-- Early support of new colors in rM software v2.11. (Not tested yet.)
+## Features that are not in [rschroll/rmrl](https://github.com/rschroll/rmrl).
+See below for the demo!
+
+- Support new colors in rM software v2.11.
   - ![#3478F7](https://via.placeholder.com/15/3478F7/000000?text=+) `#3478F7` for blue pen
   - ![#E45F59](https://via.placeholder.com/15/E45F59/000000?text=+) `#E45F59` for red pen
   - ![#B7F849](https://via.placeholder.com/15/B7F849/000000?text=+) `#B7F849` for green highlighter
   - ![#F84F91](https://via.placeholder.com/15/F84F91/000000?text=+) `#F84F91` for pink highlighter
-- Early support of smart highlights. (Currently only renders as yellow.)
+- Support smart highlights.
+
+## Demo of original features
+ additional colors | smart highlights
+:-----------------:|:-----------:
+[![reMarkable](demo/tweaked.png)](demo/tweaked.png) | [![rmrl](demo/highlight.png)](demo/highlight.png)
+
+
+
 ---
 
 rmrl is a Python library for rendering reMarkable documents to PDF files.
