@@ -18,6 +18,9 @@ from .generic import GenericPen
 
 class HighlighterPen(GenericPen):
     def __init__(self, color, *args, **kwargs):
+        # for unknown colors fall back to yellow
+        if color == (None, None, None):
+            color = (248/255, 241/255, 36/255) # yellow (yellow)
         super().__init__(color, *args, **kwargs)
         self.layer = kwargs.get('layer')
         self.annotate = False #TODO bool(int(QSettings().value(
