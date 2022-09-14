@@ -23,6 +23,9 @@ def pairs(iterable):
 
 class GenericPen(object):
     def __init__(self, color, *args, **kwargs):
+        # for unknown colors fall back to black
+        if color == (None, None, None):
+            color = (56/255, 57/255, 56/255),    # black (very dark grey)
         self.color = color
 
     def paint_stroke(self, canvas, stroke):
