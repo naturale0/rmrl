@@ -69,9 +69,10 @@ class DocumentPage:
             # rM won't save the page template for later pages. In this
             # case, just take the last-available page template, which
             # is usually 'Blank'.
-            template_name = template_names[max(self.num, len(template_names) - 1)]
+            template_name = template_names[self.num] # pages with different templates
+            # safe to set template_name = [min(self.num, len(template_names) - 1)]
             template_path = TEMPLATE_PATH / f'{template_name}.svg'
-            if template_name != 'Blank' and template_path.exists():
+            if template_path.exists():
                 self.template = str(template_path)
 
         # Load layers
