@@ -140,6 +140,8 @@ Copyright (C) 2020  Davis Remmel
 
 Copyright 2021 Robert Schroll
 
+Copyright 2021 Sihyung Park
+
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
