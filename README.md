@@ -2,6 +2,10 @@ rmrl-naturale0: reMarkable Rendering Library
 (Support pen colors / smart highlighter / multi-template)
 ===================================
 
+**Note**
+rmrl is NOT compatible with rM software v3.0 and above.
+------------------
+
 ## Difference to the original [rschroll/rmrl](https://github.com/rschroll/rmrl)
 - Black is not pure black (![#383938](https://via.placeholder.com/15x15/383938/383938.png) `#383938` instead of ![#000000](https://via.placeholder.com/15x15/000000/000000.png) `#000000`). It resembles the actual pen/pencil to my eye.
 - Grey is lighter (![#BFBFBF](https://via.placeholder.com/15x15/BFBFBF/BFBFBF.png) `#BFBFBF` instead of ![#7D7D7D](https://via.placeholder.com/15x15/7D7D7D/7D7D7D.png) `#7D7D7D`).
@@ -10,7 +14,7 @@ rmrl-naturale0: reMarkable Rendering Library
 ## Features that are not in [rschroll/rmrl](https://github.com/rschroll/rmrl).
 See below for the demo!
 
-- Support new colors from rM software v2.11.
+- Support new colors from rM software v2.11 and above.
   - ![#3478F7](https://via.placeholder.com/15x15/3478F7/3478F7.png) `#3478F7` for blue pen
   - ![#E45F59](https://via.placeholder.com/15x15/E45F59/E45F59.png) `#E45F59` for red pen
   - ![#B7F849](https://via.placeholder.com/15x15/B7F849/B7F849.png) `#B7F849` for green highlighter
