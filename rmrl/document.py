@@ -38,7 +38,9 @@ class DocumentPage:
         # On disk, these files are named by a UUID
         self.rmpath = f'{{ID}}/{pid}.rm'
         if not source.exists(self.rmpath):
-            # From the API, these files are just numbered
+            # From the API, these files are just numbered, however the
+            # json file for the highlights still uses the UUID-style pid.
+            pidhighlights = pid
             pid = str(pagenum)
             self.rmpath = f'{{ID}}/{pid}.rm'
 
@@ -51,7 +53,7 @@ class DocumentPage:
 
         # Try to load smart highlights
         self.highlightdict = None
-        highlightfilepath = f'{{ID}}.highlights/{pid}.json'
+        highlightfilepath = f'{{ID}}.highlights/{pidhighlights}.json'
         if source.exists(highlightfilepath):
             with source.open(highlightfilepath, 'r') as f:
                 self.highlightdict = json.load(f)

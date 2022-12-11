@@ -108,12 +108,14 @@ def readHighlights(json):
             rects = []
             for h in range(n_highlights):
                 rects += json["highlights"][l][h]["rects"]
-                try:
-                    colors.append(json["highlights"][l][h]["color"])
-                except KeyError:
-                    # In case there is no "color" property, set color to yellow (3)
-                    colors.append(3)
-            
+                # For each of the rects, add an entry in the colors list
+                n_rects = len(json["highlights"][l][h]["rects"])
+                for r in range(n_rects):
+                    try:
+                        colors.append(json["highlights"][l][h]["color"])
+                    except KeyError:
+                        # In case there is no "color" property, set color to yellow (3)
+                        colors.append(3)
             #n_strokes = len(rects)
             strokes = []
             for r, c in zip(rects, colors):
