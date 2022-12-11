@@ -18,8 +18,9 @@ See below for the demo!
   - ![#E45F59](https://via.placeholder.com/15x15/E45F59/E45F59.png) `#E45F59` for red pen
   - ![#B7F849](https://via.placeholder.com/15x15/B7F849/B7F849.png) `#B7F849` for green highlighter
   - ![#F84F91](https://via.placeholder.com/15x15/F84F91/F84F91.png) `#F84F91` for pink highlighter
-- Support smart highlights.
+- Support smart highlights from rM software 2.11.
 - Support different templates per pages.
+- Compatible with annotated PDFs with added/deleted/moved pages from rM software 2.12 and above
 
 ## Demo of new features
  additional colors | smart highlights
