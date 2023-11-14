@@ -1,7 +1,7 @@
 from pathlib import Path
 import pkg_resources
 
-from xdg import xdg_data_home
+from xdg_base_dirs import xdg_data_home
 
 # From rcu.py, with comment
 # Todo: this should be based on the specific RM model
